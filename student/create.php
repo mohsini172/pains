@@ -1,18 +1,21 @@
-<?php
+<?php 
     
 require_once('../db/database.php');
 
-if(isset($_POST['name']) && isset($_POST['id']) && isset($_POST['father_name']) && isset($_POST['cnic']) && isset($_POST['phone']) &&                  isset($_POST['cid']))
+if(isset($_POST['sname']) && isset($_POST['father_name']) && isset($_POST['scnic']) && isset($_POST['phone']) &&                  isset($_POST['cid']))
 {
-    $name = $_POST['name'];
-    $id = $_POST['id'];
+    $sname = $_POST['sname'];
     $father_name = $_POST['father_name'];
-    $cnic = $_POST['cnic'];
+    $scnic = $_POST['scnic'];
     $phone = $_POST['phone'];
     $cid = $_POST['cid'];
-    
-    $db->store("insert into student(`sname`, `father_name`, `scnic`, `phone`, `cid`) values('$name', '$father_name', '$cnic'
-                '$phone', '$cid')");
+    $query = "insert into student(`sname`, `father_name`, `scnic`, `phone`, `cid`) values('$sname', '$father_name', '$scnic','$phone', $cid)";
+    echo $query;
+    if($db->store($query)>0);
+    else
+    {
+        die("Error in insertion");
+    }
 }
 
 else

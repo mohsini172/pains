@@ -1,7 +1,7 @@
 <div layout="column" style="height:100%;" ng-cloak>
 <section layout="row" flex>
 
-    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-disable-backdrop md-whiteframe="3">
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"  md-whiteframe="3">
 
         <md-toolbar class="md-theme-indigo">
             <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
@@ -12,72 +12,87 @@
                 This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
             </p>
             <md-button ng-click="toggleLeft()" class="md-accent">
-                Close this Sidenav
+                Close
             </md-button>
         </md-content>
 
     </md-sidenav>
 
-    <md-content flex layout-padding>
+    <md-content flex>
         <!--<div ng-cloak>-->
-            <md-content>
-                <md-tabs md-dynamic-height md-border-bottom>
-                    <md-tab ng-repeat="(key,class) in classes" label="{{key}}" class="md-padding">
-                        <md-content class="md-padding">
-                            <div layout="column" layout-gt-xs="row">
-                                <h1 flex ng-if="$index==0">Primary Class</h1>
-                                <md-button ng-show="!isAttendence && $index==0" ng-click="isAttendence=!isAttendence" class="md-raised md-accent">+ Attendence</md-button>
-                                <md-button ng-show="isAttendence && $index==0" ng-click="isAttendence=!isAttendence" class="">Cancel</md-button>
-                            </div>
-                            <h2>Subject: {{class.subject}}</h2>
-                            <div>
-                                <form name="userForm">
-                                    <div layout-gt-xs="row">
-                                        <md-input-container class="md-block" flex>
-                                            <label>Total Marks</label>
-                                            <input ng-model="company" type="number">
-                                        </md-input-container>
-                                        <md-input-container class="md-block md-padding md-margin" flex>
-                                            <label>Type of Marks</label>
-                                            <md-select ng-model="asstate">
-                                                <md-option value="test">Test</md-option>
-                                                <md-option value="mid">Mid Term</md-option>
-                                                <md-option value="final">Final</md-option>
-                                            </md-select>
-                                        </md-input-container>
-                                        <md-input-container flex>
-                                            <label>Date</label>
-                                            <md-datepicker ng-model="submissionDate"></md-datepicker>
-                                        </md-input-container>
-                                    </div>
-                                </form>
-                            </div>
-
-
-                            <md-list ng-cloak>
-                                <md-list-item ng-repeat="student in class.students" class="md-accent">
-
-                                    <!--<img md-menu-align-target="" class="avatar" src="assets/images/avatars/profile.jpg">-->
-                                    <p>{{student.name}}</p>
-
-                                    <md-checkbox ng-show="$parent.$index==0 && isAttendence" class="md-secondary"></md-checkbox>
-                                    <md-input-container ng-if="!isAttendence" flex="50">
-                                        <label>Obtained Marks</label>
-                                        <input ng-model="user.title">
+        <md-toolbar class="md-hue-2">
+            <div class="md-toolbar-tools">
+                <md-button ng-click="toggleLeft('left')" hide-gt-md class="md-icon-button" aria-label="Settings">
+                    <md-icon> menu </md-icon>
+                </md-button>
+                <h2>
+                    <span>Home Page</span>
+                </h2>
+                <span flex></span>
+                
+                <md-button class="md-icon-button" aria-label="More">
+                    <md-icon> more_vert </md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab ng-repeat="(key,class) in classes" label="{{key}}" class="md-padding">
+                    <md-content class="md-padding">
+                        <div layout="column" layout-gt-xs="row">
+                            <h1 flex ng-if="$index==0">Primary Class</h1>
+                            <md-button ng-show="!isAttendence && $index==0" ng-click="isAttendence=!isAttendence" class="md-raised md-accent">+ Attendence</md-button>
+                            <md-button ng-show="isAttendence && $index==0" ng-click="isAttendence=!isAttendence" class="">Cancel</md-button>
+                        </div>
+                        <h2>Subject: {{class.subject}}</h2>
+                        <div>
+                            <form name="userForm">
+                                <div layout-gt-xs="row">
+                                    <md-input-container class="md-block" flex>
+                                        <label>Total Marks</label>
+                                        <input ng-model="company" type="number">
                                     </md-input-container>
-                                    <md-divider ng-if="$parent.$index==0 && isAttendence"></md-divider>
-                                </md-list-item>
-                                <!--<md-list-item ng-repeat="student in class.students">
+                                    <md-input-container class="md-block md-padding md-margin" flex>
+                                        <label>Type of Marks</label>
+                                        <md-select ng-model="asstate">
+                                            <md-option value="test">Test</md-option>
+                                            <md-option value="mid">Mid Term</md-option>
+                                            <md-option value="final">Final</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Date</label>
+                                        <md-datepicker ng-model="submissionDate"></md-datepicker>
+                                    </md-input-container>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <md-list ng-cloak>
+                            <md-list-item ng-repeat="student in class.students" class="md-accent">
+
+                                <!--<img md-menu-align-target="" class="avatar" src="assets/images/avatars/profile.jpg">-->
+                                <p>{{student.name}}</p>
+
+                                <md-checkbox ng-show="$parent.$index==0 && isAttendence" class="md-secondary"></md-checkbox>
+                                <md-input-container ng-if="!isAttendence" flex="50">
+                                    <label>Obtained Marks</label>
+                                    <input ng-model="user.title">
+                                </md-input-container>
+                                <md-divider ng-if="$parent.$index==0 && isAttendence"></md-divider>
+                            </md-list-item>
+                            <!--<md-list-item ng-repeat="student in class.students">
 							<p> {{ student.name }} </p>
 							<md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
 						</md-list-item>-->
-                            </md-list>
-                            <md-button ng-show="isAttendence && $index==0" ng-click="isAttendence=!isAttendence" class="md-raised md-accent">Save</md-button>
-                        </md-content>
-                    </md-tab>
+                        </md-list>
+                        <md-button ng-show="isAttendence && $index==0" ng-click="isAttendence=!isAttendence" class="md-raised md-accent">Save</md-button>
+                    </md-content>
+                </md-tab>
 
-                </md-tabs>
-            </md-content>
+            </md-tabs>
+        </md-content>
         <!--</div>-->
     </md-content>
 

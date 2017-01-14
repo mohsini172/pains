@@ -9,7 +9,7 @@ angular.module("pains", ["ngRoute", "ngMaterial"]).config(['$routeProvider', fun
             controller:'addClassController'
         })
         .when('/addCourse',{
-            templateUrl:'views/addCourse',
+            templateUrl:'views/addCourse.html',
             controller:'addCourseController'
         })
         .otherwise({

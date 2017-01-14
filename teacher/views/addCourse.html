@@ -1,19 +1,31 @@
 <div layout="column" style="height:100%;" ng-cloak>
 <section layout="row" flex>
 
-    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="3">
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="3" layout="column">
         <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
+            <h1 class="md-toolbar-tools">PAINS</h1>
         </md-toolbar>
-
-        <md-content layout-margin>
+        <md-list>
+            <md-list-item ng-repeat="item in menu" md-ink-ripple>
+                <a href="{{item.link}}" class="remove-underline">
+                    <md-item-content layout="row" layout-align="start center">
+                        <div class="inset">
+                            <md-icon> {{item.icon}} </md-icon>
+                        </div>
+                        <div class="inset">{{item.title}}
+                        </div>
+                    </md-item-content>
+                </a>
+            </md-list-item>
+        </md-list>
+        <!--<md-content layout-margin>
             <p>
                 This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
             </p>
             <md-button ng-click="toggleLeft()" class="md-accent">
                 Close
             </md-button>
-        </md-content>
+        </md-content>-->
 
     </md-sidenav>
 

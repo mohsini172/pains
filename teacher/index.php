@@ -11,7 +11,6 @@
 </head>
 
 <body ng-app="pains" ng-cloak>
-
     <div id="main" ng-view></div>
 
     <!-- Fab Icon Menu -->
@@ -50,6 +49,7 @@
     <script src="controllers/classes.js"></script>
     <script src="controllers/addClass.js"></script>
     <script src="controllers/addCourse.js"></script>
+    <script src="controllers/addStudent.js"></script>
 
 </body>
 

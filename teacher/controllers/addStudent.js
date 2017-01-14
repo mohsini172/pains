@@ -1,4 +1,4 @@
-angular.module("pains").controller("addClassController", function ($scope, $http, $mdSidenav) {
+angular.module("pains").controller("addStudentController", function ($scope, $http, $mdSidenav) {
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
 

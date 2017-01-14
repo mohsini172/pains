@@ -12,6 +12,10 @@ angular.module("pains", ["ngRoute", "ngMaterial"]).config(['$routeProvider', fun
             templateUrl:'views/addCourse.html',
             controller:'addCourseController'
         })
+        .when('/addStudent',{
+            templateUrl:'views/addStudent.html',
+            controller:'addStudentController'
+        })
         .otherwise({
             redirectTo: '/'
         });

@@ -52,4 +52,26 @@ angular.module("pains").controller("classesController", function ($scope, $http,
             }
         }
     }
+    $scope.menu = [
+        {
+            link: '#/',
+            title: 'My Classes',
+            icon: 'dashboard'
+        },
+        {
+            link: '#/addStudent',
+            title: 'Register Student',
+            icon: 'person_add'
+        },
+        {
+            link: '#/addClass',
+            title: 'Add New Class',
+            icon: 'group_add'
+        },
+        {
+            link: '#/addCourse',
+            title: 'Add New Course',
+            icon: 'local_library'
+        }
+    ];
 });

@@ -37,7 +37,7 @@
 
                 <form name="registerForm" novalidate ng-submit="register()">
                     <md-input-container class="md-block" md-no-float>
-                        <input name="username" ng-model="form.name" placeholder="Name" translate translate-attr-placeholder="REGISTER_V2.NAME"
+                        <input name="username" ng-model="form.tname" placeholder="Name" translate translate-attr-placeholder="REGISTER_V2.NAME"
                             required>
                         <div ng-messages="registerForm.username.$error" role="alert">
                             <div ng-message="required">
@@ -75,6 +75,16 @@
                         <div ng-messages="registerForm.passwordConfirm.$error" role="alert">
                             <div ng-message="required">
                                 <span translate="REGISTER_V2.ERRORS.PASSWORD_CONFIRM_REQUIRED">Password (Confirm) field is required</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" md-no-float>
+                        <input name="cnic" type="number" ng-model="form.tcnic" placeholder="CNIC" translate translate-attr-placeholder="REGISTER_V2.NAME"
+                            required>
+                        <div ng-messages="registerForm.cnic.$error" role="alert">
+                            <div ng-message="required">
+                                <span translate="REGISTER_V2.ERRORS.USERNAME_REQUIRED">CNIC Number is required</span>
                             </div>
                         </div>
                     </md-input-container>
@@ -135,9 +145,24 @@
          * You must include the dependency on 'ngMaterial' 
          */
         angular.module('BlankApp', ['ngMaterial'])
-        .controller('registerController',function($scope){
+        .controller('registerController',function($scope,$http){
             $scope.register = function(){
-                var formData = $scope.form;
+                // $http({
+                //     method: 'POST',
+                //     url: '../teacher/create.php',
+                //     data: {"tets":324},
+                //     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                // })
+                // .success(function(data){
+                //     console.log(data);
+                // });
+                $http.post('../teacher/create.php',$scope.form)
+                .then(function(response){
+                    alert("SUCCESS");
+                })
+                .error(function(response){
+                    alert("Error");
+                });
             };
             
         });

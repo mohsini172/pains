@@ -2,11 +2,15 @@
     
 require_once('../db/database.php');
 var_dump($_POST);
+$tid = 1;
 
-if(isset($_POST['cname']))
+if(isset($_POST['cname']) && isset($_POST['croom']) && isset($_POST['csection']) && isset($_POST['clevel']))
 {
     $cname = $_POST['cname'];
-    $query = "insert into class(`cname`) values('$cname')";
+    $croom = $_POST['croom'];
+    $csection = $_POST['csection'];
+    $clevel = $_POST['clevel'];
+    $query = "insert into class(`cname`,`tid`,`csection`,`croom`,`clevel`) values('$cname', $tid, '$csection', '$croom', '$clevel')";
     if($db->store($query) > 0);
     else
     {

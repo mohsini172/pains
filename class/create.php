@@ -11,6 +11,7 @@ if(isset($_POST['cname']) && isset($_POST['croom']) && isset($_POST['csection'])
     $csection = $_POST['csection'];
     $clevel = $_POST['clevel'];
     $query = "insert into class(`cname`,`tid`,`csection`,`croom`,`clevel`) values('$cname', $tid, '$csection', '$croom', '$clevel')";
+    echo $query;
     if($db->store($query) > 0);
     else
     {

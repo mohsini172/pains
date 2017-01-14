@@ -2,14 +2,15 @@
     
 require_once('../db/database.php');
 var_dump($_POST);
-$tid = 4;
+$tid = 1;
 
-if(isset($_POST['subname']) && isset($_POST['subtype']) && isset($_POST['cid']))
+if(isset($_POST['coursename']) && isset($_POST['coursetype']) && isset($_POST['cid']))
 {
-    $subname = $_POST['subname'];
-    $subtype = $_POST['subtype'];
+    $coursename = $_POST['coursename'];
+    $coursetype = $_POST['coursetype'];
     $cid = $_POST['cid'];
-    $query = "insert into subject(`subname`,`tid`,`cid`,`subtype`) values('$subname', $tid, $cid, '$subtype')";
+    $query = "insert into courses(`coursename`,`tid`,`cid`,`coursetype`) values('$coursename', $tid, $cid, '$coursetype')";
+    echo $query;
     if($db->store($query) > 0);
     else
     {

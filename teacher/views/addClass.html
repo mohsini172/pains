@@ -1,0 +1,83 @@
+<div layout="column" style="height:100%;" ng-cloak>
+<section layout="row" flex>
+
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="3">
+        <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
+        </md-toolbar>
+
+        <md-content layout-margin>
+            <p>
+                This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+            </p>
+            <md-button ng-click="toggleLeft()" class="md-accent">
+                Close
+            </md-button>
+        </md-content>
+
+    </md-sidenav>
+
+    <md-content flex>
+        <md-toolbar class="md-hue-2">
+            <div class="md-toolbar-tools">
+                <md-button ng-click="toggleLeft('left')" hide-gt-md class="md-icon-button" aria-label="Settings">
+                    <md-icon> menu </md-icon>
+                </md-button>
+                <h2>
+                    <span>Add New Class</span>
+                </h2>
+                <span flex></span>
+
+                <md-button class="md-icon-button" aria-label="More">
+                    <md-icon> more_vert </md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <form name="class" layout-padding>
+            <div layout="column">
+                <md-input-container>
+                    <label>Class Name</label>
+                    <input required name="cname" ng-model="Class.cname">
+                    <div ng-messages="class.cname.$error">
+                        <div ng-message="required">Name is required.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Class Level</label>
+                    <div ng-messages="class.level.$error">
+                        <div ng-message="required">Please select a Class Level.</div>
+                    </div>
+                    <md-select name="level" ng-model="Class.level" required>
+                        <md-option value="primary">Primary</md-option>
+                        <md-option value="oLevel">O Level</md-option>
+                        <md-option value="matric">Matric</md-option>
+                        <md-option value="aLevel">A Level</md-option>
+                        <md-option value="fsc">F.S.C</md-option>
+                    </md-select>
+                </md-input-container>
+                <div layout="row">
+                    <md-input-container flex="50">
+                        <label>Section</label>
+                        <input required name="section" ng-model="Class.section">
+                        <div ng-messages="class.section.$error">
+                            <div ng-message="required">Section is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex="50" >
+                        <label>Room No</label>
+                        <input type="number" required name="room" ng-model="Class.room">
+                        <div ng-messages="class.room.$error">
+                            <div ng-message="required">Class room is required.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            <div>
+                <md-button md-colors="{background:'primary'}" type="submit">Submit</md-button>
+            </div>
+        </form>
+    </md-content>
+</section>
+</div>

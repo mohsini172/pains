@@ -23,13 +23,13 @@
         </md-fab-trigger>
 
         <md-fab-actions>
-            <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+            <md-button aria-label="Twitter" class="md-fab md-warn md-raised md-mini">
                 <md-icon aria-label="Twitter"> menu </md-icon>
             </md-button>
-            <md-button aria-label="Facebook" class="md-fab md-raised md-mini ">
+            <md-button aria-label="Facebook" class="md-fab md-warn md-raised md-mini ">
                 <md-icon aria-label="Facebook"> menu </md-icon>
             </md-button>
-            <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini ">
+            <md-button aria-label="Google Hangout" class="md-fab md-warn md-raised md-mini ">
                 <md-icon aria-label="Google Hangout"> menu </md-icon>
             </md-button>
         </md-fab-actions>
@@ -48,6 +48,8 @@
     <!-- Your application bootstrap  -->
     <script src="app.js" type="text/javascript"></script>
     <script src="controllers/classes.js"></script>
+    <script src="controllers/addClass.js"></script>
+    <script src="controllers/addCourse.js"></script>
 
 </body>
 

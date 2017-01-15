@@ -59,13 +59,14 @@ angular.module("pains").controller("classesController", function ($scope, $http,
                     "courseid":key,
                     "Students":$scope.Students.Marks,
                     "total":$scope.totalmarks[key],
-                    "type": $scope.typeOfMarks[key]
+                    "type": $scope.typeOfMarks[key],
+                    "date": $scope.submissionDate[key]
                 };
         $http.post('../student/addMarks.php',data)
         .then(function(data){
-
+            alert("Success");
         },function(error){
-            
-        });
+            alert("There was an error in submission");
+        }); 
     };
 });

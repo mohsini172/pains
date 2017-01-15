@@ -81,6 +81,8 @@ $marks = "CREATE TABLE IF NOT EXISTS marks
     courseid INT,
     sid INT,
     marks_type VARCHAR(20),
+    marks_obtained INT,
+    total_marks INT,
     PRIMARY KEY(mid),
     FOREIGN KEY(sid) REFERENCES student(sid),
     FOREIGN KEY(courseid) REFERENCES courses(courseid)

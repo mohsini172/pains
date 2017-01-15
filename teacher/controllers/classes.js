@@ -1,57 +1,10 @@
 angular.module("pains").controller("classesController", function ($scope, $http, $mdSidenav) {
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
-
-    function buildToggler(componentId) {
-        return function () {
-            $mdSidenav(componentId).toggle();
-        }
-    }
-    $scope.isAttendence = false;
-    $scope.classes = {
-        "BSCS-4A": {
-            "subject": "Maths",
-            "students": {
-                "0": {
-                    "name": "Mohsin Ammar"
-                },
-                "1": {
-                    "name": "Jamal Hassan Sargana"
-                },
-                "2": {
-                    "name": "Waqas Javed"
-                }
-            }
-        },
-        "BSCS-4B": {
-            "subject": "English",
-            "students": {
-                "0": {
-                    "name": "Mohsin Ammar"
-                },
-                "1": {
-                    "name": "Jamal Hassan Sargana"
-                },
-                "2": {
-                    "name": "Waqas Javed"
-                }
-            }
-        },
-        "BSCS-4C": {
-            "subject": "Urdu",
-            "students": {
-                "0": {
-                    "name": "Mohsin Ammar"
-                },
-                "1": {
-                    "name": "Jamal Hassan Sargana"
-                },
-                "2": {
-                    "name": "Waqas Javed"
-                }
-            }
-        }
-    }
+    $scope.Students = {};
+    $scope.test = 0;
+    $scope.Students.Attendence = {};
+    $scope.Students.Marks = {};
     $scope.menu = [
         {
             link: '#/',
@@ -74,11 +27,45 @@ angular.module("pains").controller("classesController", function ($scope, $http,
             icon: 'local_library'
         }
     ];
+    $scope.totalmarks = {};
+    $scope.typeOfMarks = {};
+    $scope.submissionDate = {};
+    function buildToggler(componentId) {
+        return function () {
+            $mdSidenav(componentId).toggle();
+        }
+    }
+    $scope.isAttendence = false;
     $http.get('../student/getStudents.php')
     .then(function(data){
         $scope.classes = data.data;
         console.log(data);
     },function(){
+        alert("There was some error fetching data");
+    });
 
-    })
+
+    $scope.submitAttendence = function(key){
+        var data = {"Students":$scope.Students.Attendence,"date":$scope.submissionDate[key]};
+        $http.post('../student/addAttendence.php',data)
+        .then(function(data){
+            var temp = data;
+        },function(error){
+            alert("There was an error");
+        });
+    };
+    $scope.submitMarks = function(key){
+        var data = {
+                    "courseid":key,
+                    "Students":$scope.Students.Marks,
+                    "total":$scope.totalmarks[key],
+                    "type": $scope.typeOfMarks[key]
+                };
+        $http.post('../student/addMarks.php',data)
+        .then(function(data){
+
+        },function(error){
+            
+        });
+    };
 });

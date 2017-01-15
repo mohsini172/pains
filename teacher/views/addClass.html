@@ -47,7 +47,7 @@
             </div>
         </md-toolbar>
 
-        <form name="class" layout-padding>
+        <form name="class" layout-padding ng-submit="submit()">
             <div layout="column">
                 <md-input-container>
                     <label>Class Name</label>
@@ -62,7 +62,7 @@
                     <div ng-messages="class.level.$error">
                         <div ng-message="required">Please select a Class Level.</div>
                     </div>
-                    <md-select name="level" ng-model="Class.level" required>
+                    <md-select name="level" ng-model="Class.clevel" required>
                         <md-option value="primary">Primary</md-option>
                         <md-option value="oLevel">O Level</md-option>
                         <md-option value="matric">Matric</md-option>
@@ -73,14 +73,14 @@
                 <div layout="row">
                     <md-input-container flex="50">
                         <label>Section</label>
-                        <input required name="section" ng-model="Class.section">
+                        <input required name="section" ng-model="Class.csection">
                         <div ng-messages="class.section.$error">
                             <div ng-message="required">Section is required.</div>
                         </div>
                     </md-input-container>
                     <md-input-container flex="50">
                         <label>Room No</label>
-                        <input type="number" required name="room" ng-model="Class.room">
+                        <input type="number" required name="room" ng-model="Class.croom">
                         <div ng-messages="class.room.$error">
                             <div ng-message="required">Class room is required.</div>
                         </div>

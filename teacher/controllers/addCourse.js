@@ -29,4 +29,18 @@ angular.module("pains").controller("addCourseController", function ($scope, $htt
             icon: 'local_library'
         }
     ];
+    $http.get('../class/getClass.php')
+    .then(function(data){
+        $scope.classes = data.data;
+    },function(error){
+        alert("There was an error fetching classes");
+    });
+    $scope.submit = function(){
+        $http.post('../courses/create.php',$scope.Course)
+        .then(function(){
+            alert("SUCCESS")
+        },function(error){
+            alert("there was an error in insertion");
+        });
+    }
 });

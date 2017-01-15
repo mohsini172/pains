@@ -7,6 +7,14 @@ angular.module("pains").controller("addClassController", function ($scope, $http
             $mdSidenav(componentId).toggle();
         }
     }
+    $scope.submit = function(){
+        $http.post('../class/create.php',$scope.Class)
+        .then(function(response){
+            alert("Success");
+        },function(error){
+            alert("There was an error creating the Class");
+        });
+    }
     $scope.menu = [
         {
             link: '#/',

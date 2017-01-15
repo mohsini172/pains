@@ -46,18 +46,18 @@
             </div>
         </md-toolbar>
 
-        <form name="StudentForm" layout-padding>
+        <form name="StudentForm" layout-padding ng-submit = "submit()">
             <div layout="column">
                 <md-input-container>
                     <label>Student Name</label>
-                    <input required name="cname" ng-model="Student.cname">
+                    <input required name="cname" ng-model="Student.sname">
                     <div ng-messages="StudentForm.cname.$error">
                         <div ng-message="required">Name is required.</div>
                     </div>
                 </md-input-container>
                 <md-input-container>
                     <label>Father Name</label>
-                    <input required name="fname" ng-model="Student.fname">
+                    <input required name="fname" ng-model="Student.father_name">
                     <div ng-messages="StudentForm.fname.$error">
                         <div ng-message="required">Father Name is required.</div>
                     </div>
@@ -72,17 +72,13 @@
                 <div layout="row">
                     <md-input-container flex="50">
                         <label>Class</label>
-                        <md-select name="Class" ng-model="Student.Class" required>
-                            <md-option value="primary">Primary</md-option>
-                            <md-option value="oLevel">O Level</md-option>
-                            <md-option value="matric">Matric</md-option>
-                            <md-option value="aLevel">A Level</md-option>
-                            <md-option value="fsc">F.S.C</md-option>
+                        <md-select name="Class" ng-model="Student.cid" required>
+                            <md-option ng-repeat="class in classes" value="{{class.cid}}">{{class.cname+'-'+class.csection}}</md-option>
                         </md-select>
                     </md-input-container>
                     <md-input-container flex="50">
                         <label>Roll No</label>
-                        <input required name="rno" ng-model="Student.rno" />
+                        <input required name="rno" ng-model="Student.rollnum" />
                         <div ng-messages="StudentForm.rno.$error">
                             <div ng-message="required">Roll Number is required.</div>
                         </div>

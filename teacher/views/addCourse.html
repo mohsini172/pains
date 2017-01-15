@@ -46,11 +46,11 @@
             </div>
         </md-toolbar>
 
-        <form name="courseForm" layout-padding>
+        <form name="courseForm" layout-padding ng-submit="submit()">
             <div layout="column">
                 <md-input-container>
                     <label>Course Name</label>
-                    <input required name="cname" ng-model="Course.cname">
+                    <input required name="cname" ng-model="Course.coursename">
                     <div ng-messages="courseForm.cname.$error">
                         <div ng-message="required">Name is required.</div>
                     </div>
@@ -58,17 +58,13 @@
                 <div layout="row">
                     <md-input-container flex="50">
                         <label>Class</label>
-                        <md-select name="Class" ng-model="Course.Class" required>
-                            <md-option value="primary">Primary</md-option>
-                            <md-option value="oLevel">O Level</md-option>
-                            <md-option value="matric">Matric</md-option>
-                            <md-option value="aLevel">A Level</md-option>
-                            <md-option value="fsc">F.S.C</md-option>
+                        <md-select name="Class" ng-model="Course.cid" required>
+                            <md-option ng-repeat = "class in classes" value="{{class.cid}}">{{class.cname+'-'+class.csection}}</md-option>
                         </md-select>
                     </md-input-container>
                     <md-input-container flex="50">
                         <label>Course Type</label>
-                        <md-select name="Type" ng-model="Course.courseType" required>
+                        <md-select name="Type" ng-model="Course.coursetype" required>
                             <md-option value="core">Core Course</md-option>
                             <md-option value="elective">Elective</md-option>
                         </md-select>

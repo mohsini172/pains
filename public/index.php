@@ -13,7 +13,7 @@
     Your HTML content here
   -->
 
-    <div id="login-v2" layout="row" layout-align="start">
+    <div ng-controller="loginController" id="login-v2" layout="row" layout-align="start">
         <div id="login-v2-intro" flex hide show-gt-sm>
             <div class="logo md-accent-bg">
                 <span>F</span>
@@ -36,9 +36,9 @@
                 <div class="title" translate="LOGIN_V2.TITLE">Log in to your account</div>
                 <div class="description" translate="LOGIN_V2.DESCRIPTION">Sed mollis velit facilisis facilisis viverra</div>
 
-                <form name="loginForm" novalidate>
+                <form name="loginForm" novalidate ng-submit = "login()">
                     <md-input-container class="md-block" md-no-float>
-                        <input type="email" name="email" ng-model="vm.form.email" placeholder="Email" translate translate-attr-placeholder="LOGIN_V2.EMAIL"
+                        <input type="email" name="email" ng-model="form.email" placeholder="Email" translate translate-attr-placeholder="LOGIN_V2.EMAIL"
                             ng-pattern="/^.+@.+\..+$/" required>
                         <div ng-messages="loginForm.email.$error" role="alert" multiple>
                             <div ng-message="required">
@@ -51,7 +51,7 @@
                     </md-input-container>
 
                     <md-input-container class="md-block" md-no-float>
-                        <input type="password" name="password" ng-model="vm.form.password" placeholder="Password" translate translate-attr-placeholder="LOGIN_V2.PASSWORD"
+                        <input type="password" name="password" ng-model="form.password" placeholder="Password" translate translate-attr-placeholder="LOGIN_V2.PASSWORD"
                             required>
                         <div ng-messages="loginForm.password.$error" role="alert">
                             <div ng-message="required">
@@ -102,7 +102,16 @@
     /**
      * You must include thea dependency on 'ngMaterial' 
      */
-    angular.module('pains', ['ngMaterial']);
+    angular.module('pains', ['ngMaterial'])
+    .controller('loginController',function($scope,$http,$location){
+        $scope.login = function(){
+            $http.post('../auth/login.php',$scope.form)
+            .then(function(data){
+                window.location = '../';
+            });
+        };
+        
+    });
 </script>
 
 </body>

@@ -48,14 +48,14 @@
         </md-toolbar>
         <md-content>
             <md-tabs md-dynamic-height md-border-bottom>
-                <md-tab ng-repeat="(key,class) in classes" label="{{key}}" class="md-padding">
+                <md-tab ng-repeat="(key,class) in classes" label="{{class[0]['cname']}}" class="md-padding">
                     <md-content class="md-padding">
                         <div layout="column" layout-gt-xs="row">
                             <h1 flex ng-if="$index==0">Primary Class</h1>
                             <md-button ng-show="!isAttendence && $index==0" ng-click="isAttendence=!isAttendence" class="md-raised md-accent">+ Attendence</md-button>
                             <md-button ng-show="isAttendence && $index==0" ng-click="isAttendence=!isAttendence" class="">Cancel</md-button>
                         </div>
-                        <h2>Subject: {{class.subject}}</h2>
+                        <h2>Subject: {{class[0]['coursename']}}</h2>
                         <div>
                             <form name="userForm">
                                 <div layout-gt-xs="row">
@@ -81,10 +81,10 @@
 
 
                         <md-list ng-cloak>
-                            <md-list-item ng-repeat="student in class.students" class="md-accent">
+                            <md-list-item ng-repeat="student in class" class="md-accent">
 
                                 <!--<img md-menu-align-target="" class="avatar" src="assets/images/avatars/profile.jpg">-->
-                                <p>{{student.name}}</p>
+                                <p>{{student.sname}}</p>
 
                                 <md-checkbox ng-show="$parent.$index==0 && isAttendence" class="md-secondary"></md-checkbox>
                                 <md-input-container ng-if="!isAttendence" flex="50">

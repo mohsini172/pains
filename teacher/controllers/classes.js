@@ -74,4 +74,11 @@ angular.module("pains").controller("classesController", function ($scope, $http,
             icon: 'local_library'
         }
     ];
+    $http.get('../student/getStudents.php')
+    .then(function(data){
+        $scope.classes = data.data;
+        console.log(data);
+    },function(){
+
+    })
 });

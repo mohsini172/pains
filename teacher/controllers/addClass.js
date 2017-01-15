@@ -37,4 +37,14 @@ angular.module("pains").controller("addClassController", function ($scope, $http
             icon: 'local_library'
         }
     ];
+    $scope.logout = function(){
+        $http.get('../auth/logout.php')
+        .then(function(){
+            window.location = "../";
+        });
+    }
+    $scope.openMenu = function ($mdOpenMenu, ev) {
+        originatorEv = ev;
+        $mdOpenMenu(ev);
+    };
 });

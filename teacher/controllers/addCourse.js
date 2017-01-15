@@ -43,4 +43,14 @@ angular.module("pains").controller("addCourseController", function ($scope, $htt
             alert("there was an error in insertion");
         });
     }
+    $scope.logout = function(){
+        $http.get('../auth/logout.php')
+        .then(function(){
+            window.location = "../";
+        });
+    }
+    $scope.openMenu = function ($mdOpenMenu, ev) {
+        originatorEv = ev;
+        $mdOpenMenu(ev);
+    };
 });

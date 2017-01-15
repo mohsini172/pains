@@ -40,9 +40,20 @@
                 </h2>
                 <span flex></span>
 
-                <md-button class="md-icon-button" aria-label="More">
-                    <md-icon> more_vert </md-icon>
-                </md-button>
+                <md-menu>
+                    <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                        <md-icon> more_vert </md-icon>
+                    </md-button>
+                    <md-menu-content width="4">
+                        <md-menu-item>
+                            <md-button ng-click = "logout()">
+                                Logout
+                            </md-button>
+                        </md-menu-item>
+                        
+                        <!--<md-menu-divider></md-menu-divider>-->
+                    </md-menu-content>
+                </md-menu>
             </div>
         </md-toolbar>
 

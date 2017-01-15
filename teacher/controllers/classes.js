@@ -37,36 +37,46 @@ angular.module("pains").controller("classesController", function ($scope, $http,
     }
     $scope.isAttendence = false;
     $http.get('../student/getStudents.php')
-    .then(function(data){
-        $scope.classes = data.data;
-        console.log(data);
-    },function(){
-        alert("There was some error fetching data");
-    });
-
-
-    $scope.submitAttendence = function(key){
-        var data = {"Students":$scope.Students.Attendence,"date":$scope.submissionDate[key]};
-        $http.post('../student/addAttendence.php',data)
-        .then(function(data){
-            var temp = data;
-        },function(error){
-            alert("There was an error");
+        .then(function (data) {
+            $scope.classes = data.data;
+            console.log(data);
+        }, function () {
+            alert("There was some error fetching data");
         });
+
+
+    $scope.submitAttendence = function (key) {
+        var data = { "Students": $scope.Students.Attendence, "date": $scope.submissionDate[key] };
+        $http.post('../student/addAttendence.php', data)
+            .then(function (data) {
+                var temp = data;
+            }, function (error) {
+                alert("There was an error");
+            });
     };
-    $scope.submitMarks = function(key){
+    $scope.submitMarks = function (key) {
         var data = {
-                    "courseid":key,
-                    "Students":$scope.Students.Marks,
-                    "total":$scope.totalmarks[key],
-                    "type": $scope.typeOfMarks[key],
-                    "date": $scope.submissionDate[key]
-                };
-        $http.post('../student/addMarks.php',data)
-        .then(function(data){
-            alert("Success");
-        },function(error){
-            alert("There was an error in submission");
-        }); 
+            "courseid": key,
+            "Students": $scope.Students.Marks,
+            "total": $scope.totalmarks[key],
+            "type": $scope.typeOfMarks[key],
+            "date": $scope.submissionDate[key]
+        };
+        $http.post('../student/addMarks.php', data)
+            .then(function (data) {
+                alert("Success");
+            }, function (error) {
+                alert("There was an error in submission");
+            });
     };
+    $scope.openMenu = function ($mdOpenMenu, ev) {
+        originatorEv = ev;
+        $mdOpenMenu(ev);
+    };
+    $scope.logout = function(){
+        $http.get('../auth/logout.php')
+        .then(function(){
+            window.location = "../";
+        });
+    }
 });
